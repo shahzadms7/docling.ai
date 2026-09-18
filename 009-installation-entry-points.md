@@ -1,20 +1,19 @@
 # Installation Entry Points
 
-## Primary supported path — Windows
-Open **001-START-HERE.ps1** in Windows PowerShell ISE 5.1 and press F5. This is the authoritative human control plane for the current project.
+## Canonical Windows path
+Open **001-start-here.ps1** in Windows PowerShell ISE 5.1 and press F5. This is the authoritative human control plane for the current Windows implementation.
 
 ## PowerShell CLI
-From an existing PowerShell 5.1 console:
 ```powershell
 Set-Location '<where-you-extracted-the-package>'
-.\001-START-HERE.ps1
+.\001-start-here.ps1
 ```
 
-## CMD launcher
-A future numbered `.cmd` wrapper may launch the same PowerShell orchestrator. CMD is a launcher, not a second implementation.
+## Command Prompt
+Run **016-command-prompt-launcher.cmd**. It is a thin launcher for the same PowerShell orchestrator.
 
 ## Bash / sh
-Bash/sh are portability targets only after the Windows implementation is certified. They must call the same declarative deployment plan/state model rather than fork business logic.
+Run **017-shell-launcher.sh** only where a compatible local PowerShell executable is available. It is a thin launcher; it does not duplicate deployment business logic.
 
-## Principle
-One engine, one configuration schema, one state machine, multiple thin launchers. Never maintain four unrelated installers.
+## Engineering rule
+**One orchestration/state model, multiple thin entry points.** Platform launchers may differ, but discovery, planning, implementation, checkpoints, tests, repair boundaries and evidence contracts must not fork into separate products.
