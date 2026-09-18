@@ -49,7 +49,7 @@
 ## 🏗️ FOUNDATION GATE — BEFORE LAB 01
 
 > [!CAUTION]
-> Feature-first development is suspended. The project now uses a foundation-first engineering model. Read `docs/FOUNDATION-FIRST.md` before treating any current script as production-ready.
+> Feature-first development is suspended. The project now uses a foundation-first engineering model. Read `01-FOUNDATION-FIRST.md` before treating any current script as production-ready.
 
 The foundation gate covers requirements traceability, architecture decisions, quality pillars, threat/failure modeling, environment qualification, lifecycle/data contracts, transaction/recovery semantics, observability, synthetic certification, supply-chain integrity, backup/restore, human operations and production-readiness evidence.
 
@@ -57,17 +57,44 @@ The foundation gate covers requirements traceability, architecture decisions, qu
 ## 🚀 START HERE — HUMAN EXECUTION PATH
 
 > [!IMPORTANT]
-> The architecture below is not the execution sequence. The executable, micro-tasked build begins in **docs/ACTIONABLE-LABS.md** and uses **Windows PowerShell 5.1 / ISE** as the human control plane.
+> The architecture below is not the execution sequence. The executable, micro-tasked build begins in **02-ACTIONABLE-LABS.md** and uses **Windows PowerShell 5.1 / ISE** as the human control plane.
 
 Current executable foundation files:
 
-- `scripts/01-bootstrap.ps1` — standard-user preflight and creation of `C:\Projects\docling.ai`.
-- `tests/01-smoke.ps1` — foundation verification.
-- `scripts/02-corpusctl.ps1` — PowerShell 5.1 wrapper for deterministic Python operations.
-- `src/docling_ai/corpusctl.py` — initial SQLite/inventory/hash/lifecycle engine.
-- `docs/ACTIONABLE-LABS.md` — ordered Lab 00–24 execution path, expected results, stop gates, auto-healing boundary and troubleshooting.
+- `10-BOOTSTRAP-PS51.ps1` — standard-user preflight and creation of `C:\Projects\docling.ai`.
+- `90-SMOKE-TEST-PS51.ps1` — foundation verification.
+- `11-CORPUSCTL-PS51.ps1` — PowerShell 5.1 wrapper for deterministic Python operations.
+- `20-CORPUS-ENGINE.py` — initial SQLite/inventory/hash/lifecycle engine.
+- `02-ACTIONABLE-LABS.md` — ordered Lab 00–24 execution path, expected results, stop gates, auto-healing boundary and troubleshooting.
 
 **Do not put real corpus data into the system yet.** First pass the synthetic bootstrap, smoke, duplicate, rename/delete and reconciliation gates.
+
+---
+
+## 🧭 FLAT PUBLIC REPOSITORY — CLICK, OPEN, COPY, RUN
+
+The public learning repository intentionally keeps executable and guide files in the **main repository root** so a learner can click a filename, read it in GitHub, copy the code, and run it locally. The public GitHub layout is not the same as the local runtime data layout.
+
+| Order | Click/open | Human action | Expected result |
+|---:|---|---|---|
+| 01 | `01-FOUNDATION-FIRST.md` | Read before executing | Understand immutable foundation gates |
+| 02 | `02-ACTIONABLE-LABS.md` | Follow labs in order | No guessing about next step |
+| 10 | `10-BOOTSTRAP-PS51.ps1` | Open in GitHub → copy into PowerShell ISE 5.1 → F5 | Creates/qualifies `C:\Projects\docling.ai` |
+| 11 | `11-CORPUSCTL-PS51.ps1` | PowerShell ISE control plane | Calls deterministic engine without making operator use Python directly |
+| 20 | `20-CORPUS-ENGINE.py` | Internal engine reference | Inventory/hash/lifecycle foundation |
+| 90 | `90-SMOKE-TEST-PS51.ps1` | Run from ISE | Foundation PASS/FAIL evidence |
+
+> [!IMPORTANT]
+> The local runtime still uses controlled folders under `C:\Projects\docling.ai` for SOURCE, CORPUS, OUTPUT and SYSTEM. Flattening GitHub does **not** mean flattening operational data.
+
+### Command Center target contract
+The command center is not only a dashboard. It becomes the default local operator workspace: **Upload/Intake → Queue → Processing → Exceptions → Search → AI Chat → Generate → Review → Outputs → Logs/Trace → System Health**. A user-selected document is copied into a controlled intake/staging transaction, hashed, logged, stability-checked, classified, then atomically admitted to the appropriate SOURCE lane. The original selected file is never edited. Every intake action receives a run/session/event trail.
+
+### Default AI Chat target
+After the deterministic foundation, corpus and search gates pass, local Ollama-backed AI Chat is embedded in the localhost command center by default. It retrieves evidence rather than rereading the whole estate, cites source/chunk/page/sheet/slide/line coordinates where available, treats document text as untrusted data, records model/prompt/retrieval versions, and never autonomously modifies SOURCE.
+
+### Never-break foundation rule
+Foundation contracts are versioned and regression-tested. Enhancements are additive behind stable interfaces. Schema changes require migrations; parser changes require regression fixtures; model changes cannot redefine evidence; indexes remain rebuildable; SOURCE remains immutable; durable manifests remain authoritative for reconstruction. 'Never break' means backward-compatible contracts plus tested migration/recovery—not pretending software can never fail.
 
 ---
 ## 1. Executive Summary
@@ -294,13 +321,13 @@ A true Windows service normally requires admin/IT involvement. Until then:
 Recommended root:
 
 ```text
-C:\DoclingAI\
+C:\Projects\docling.ai\
 ```
 
 Top-level structure:
 
 ```text
-C:\DoclingAI\
+C:\Projects\docling.ai\
 ├── SOURCE\
 ├── CORPUS\
 ├── OUTPUT\
