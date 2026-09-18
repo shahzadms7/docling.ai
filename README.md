@@ -46,6 +46,14 @@
 
 ---
 
+## 🏗️ FOUNDATION GATE — BEFORE LAB 01
+
+> [!CAUTION]
+> Feature-first development is suspended. The project now uses a foundation-first engineering model. Read `docs/FOUNDATION-FIRST.md` before treating any current script as production-ready.
+
+The foundation gate covers requirements traceability, architecture decisions, quality pillars, threat/failure modeling, environment qualification, lifecycle/data contracts, transaction/recovery semantics, observability, synthetic certification, supply-chain integrity, backup/restore, human operations and production-readiness evidence.
+
+---
 ## 🚀 START HERE — HUMAN EXECUTION PATH
 
 > [!IMPORTANT]
