@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Docling AI Command Center</title>
+<link rel="stylesheet" href="/511-command-center.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="app">
+  <aside class="rail" aria-label="Primary navigation">
+    <div class="brand"><span class="brandMark">D</span><span>Docling AI</span></div>
+    <nav id="nav">
+      <button class="navItem active" data-view="overview">⌂ <span>Overview</span></button>
+      <button class="navItem" data-view="intake">＋ <span>Add Documents</span></button>
+      <button class="navItem" data-view="library">▤ <span>Library</span></button>
+      <button class="navItem" data-view="search">⌕ <span>Hybrid Search</span></button>
+      <button class="navItem" data-view="chat">✦ <span>AI Chat</span></button>
+      <button class="navItem" data-view="create">▣ <span>Create</span></button>
+      <button class="navItem" data-view="exceptions">⚠ <span>Exceptions</span></button>
+      <button class="navItem" data-view="health">♥ <span>System Health</span></button>
+    </nav>
+    <div class="railFoot"><span class="dot success"></span><span id="railHealth">Local only</span></div>
+  </aside>
+  <main id="main" tabindex="-1">
+    <header class="topbar">
+      <div><h1 id="viewTitle">Command Center</h1><p id="viewSubtitle">Evidence-first local knowledge workspace</p></div>
+      <div class="topActions"><span class="pill">FOUNDATION</span><button id="refreshBtn" class="ghost">↻ Refresh</button><button id="themeBtn" class="ghost">◐ Theme</button></div>
+    </header>
+
+    <section id="overview" class="view active">
+      <div class="hero">
+        <div><span class="eyebrow">LOCAL • AUDITABLE • EVIDENCE-FIRST</span><h2>Your knowledge estate, under control.</h2><p>Ingest, trace, search, discuss, analyze and create without surrendering source evidence.</p></div>
+        <button class="primary" data-jump="intake">＋ Add documents</button>
+      </div>
+      <div class="kpis">
+        <article class="card metric"><span>Accounted files</span><strong id="kpiFiles">0</strong><small>Explicit inventory</small></article>
+        <article class="card metric"><span>Open exceptions</span><strong id="kpiExceptions">0</strong><small>Needs attention</small></article>
+        <article class="card metric"><span>AI model</span><strong id="kpiModel">Not selected</strong><small>Local Ollama</small></article>
+        <article class="card metric"><span>System</span><strong id="kpiHealth">Checking…</strong><small>Foundation status</small></article>
+      </div>
+      <div class="grid2">
+        <article class="card"><div class="cardHead"><h3>Processing pipeline</h3><span class="tag info">LIVE CONTRACT</span></div>
+          <div class="pipeline"><span>Discover</span><b>→</b><span>Hash</span><b>→</b><span>Extract</span><b>→</b><span>Validate</span><b>→</b><span>Index</span><b>→</b><span>AI</span></div>
+        </article>
+        <article class="card"><div class="cardHead"><h3>Trust boundary</h3><span class="tag success">ENFORCED BY DESIGN</span></div>
+          <ul class="clean"><li>🔒 SOURCE is immutable</li><li>🧾 Every action is traceable</li><li>🧠 AI is interpretation, not evidence</li><li>🌐 No corpus upload by default</li></ul>
+        </article>
+      </div>
+      <article class="card"><div class="cardHead"><h3>Recent evidence</h3><button class="linkBtn" data-jump="library">View library →</button></div><div id="recentTable"></div></article>
+    </section>
+
+    <section id="intake" class="view">
+      <div class="sectionLead"><h2>Add documents</h2><p>Files stream to a temporary local transaction, are hashed and then admitted without modifying the originals.</p></div>
+      <label class="drop" id="dropZone"><input id="fileInput" type="file" multiple><span class="dropIcon">⇧</span><strong>Choose files or drop them here</strong><small>DOCX • XLSX • PPTX • PDF • PNG/JPG • TXT/MD/CSV/JSON • source code</small></label>
+      <div id="uploadQueue" class="stack"></div>
+    </section>
+
+    <section id="library" class="view"><div class="sectionLead"><h2>Library</h2><p>Every admitted source has identity, hash, lifecycle and processing state.</p></div><div class="card" id="libraryTable"></div></section>
+
+    <section id="search" class="view">
+      <div class="sectionLead"><h2>Hybrid search</h2><p>Exact metadata + keyword FTS + optional semantic retrieval. Semantic capability activates only when configured and certified.</p></div>
+      <div class="searchbar"><input id="searchInput" aria-label="Search evidence" placeholder="Search filenames, source text or evidence…"><button id="searchBtn" class="primary">Search</button></div>
+      <div id="searchResults" class="stack"></div>
+    </section>
+
+    <section id="chat" class="view">
+      <div class="sectionLead"><h2>AI Chat</h2><p>Local Ollama chat. Retrieved document text is untrusted evidence and citations remain mandatory.</p></div>
+      <div class="chatLayout"><div class="card chat"><div id="chatLog" class="chatLog"><div class="msg system">Ask about your local corpus. This foundation build will never pretend unsupported evidence exists.</div></div><div class="composer"><textarea id="chatInput" rows="3" placeholder="Ask a question…"></textarea><button id="chatBtn" class="primary">Send ✦</button></div></div><aside class="card evidence"><h3>Evidence</h3><div id="evidencePanel" class="muted">No evidence selected yet.</div></aside></div>
+    </section>
+
+    <section id="create" class="view"><div class="sectionLead"><h2>Create</h2><p>Governed outputs are DRAFT until human review.</p></div><div class="tiles">
+      <article class="card tile"><span>W</span><h3>Word report</h3><p>Requirements, runbooks, executive reports, architecture documents.</p></article>
+      <article class="card tile"><span>X</span><h3>Excel analysis</h3><p>Inventories, matrices, reconciliations, calculations and evidence tables.</p></article>
+      <article class="card tile"><span>P</span><h3>PowerPoint</h3><p>Briefings, designs, roadmap and evidence-backed presentations.</p></article>
+      <article class="card tile"><span>PDF</span><h3>PDF package</h3><p>Controlled reports and review-ready distribution copies.</p></article>
+      <article class="card tile"><span>◇</span><h3>Diagram</h3><p>Architecture, workflow, lifecycle and dependency diagrams.</p></article>
+      <article class="card tile"><span>{ }</span><h3>Code</h3><p>Draft code with explicit review and source references.</p></article>
+    </div><div class="notice warn">Generation backends are not marked certified until their dependency, validation and regression gates pass.</div></section>
+
+    <section id="exceptions" class="view"><div class="sectionLead"><h2>Exceptions</h2><p>Failures remain visible until resolved or explicitly accepted.</p></div><div id="exceptionsTable" class="card"></div></section>
+    <section id="health" class="view"><div class="sectionLead"><h2>System health</h2><p>Environment, runtime, AI and evidence boundary health.</p></div><div id="healthGrid" class="kpis"></div></section>
+  </main>
+</div>
+<script src="/512-command-center.js"></script>
+</body>
+</html>
