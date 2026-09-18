@@ -10,7 +10,16 @@ function setView(id){
 }
 $$('.navItem').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
 $$('[data-jump]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.jump)));
-$('#themeBtn').addEventListener('click',()=>document.documentElement.classList.toggle('dark'));
+const THEMES=['white','black','microsoft','google'];
+function applyTheme(name){
+  const theme=THEMES.includes(name)?name:'white';
+  document.documentElement.dataset.theme=theme;
+  localStorage.setItem('docling-ai-theme',theme);
+  const select=$('#themeSelect'); if(select && select.value!==theme) select.value=theme;
+}
+const savedTheme=localStorage.getItem('docling-ai-theme')||'white';
+applyTheme(savedTheme);
+$('#themeSelect').addEventListener('change',e=>applyTheme(e.target.value));
 
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function status(s){return '<span class="status '+esc(s)+'">'+esc(s)+'</span>'}
