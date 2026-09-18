@@ -46,6 +46,22 @@
 
 ---
 
+## 🚀 START HERE — HUMAN EXECUTION PATH
+
+> [!IMPORTANT]
+> The architecture below is not the execution sequence. The executable, micro-tasked build begins in **docs/ACTIONABLE-LABS.md** and uses **Windows PowerShell 5.1 / ISE** as the human control plane.
+
+Current executable foundation files:
+
+- `scripts/01-bootstrap.ps1` — standard-user preflight and creation of `C:\Projects\docling.ai`.
+- `tests/01-smoke.ps1` — foundation verification.
+- `scripts/02-corpusctl.ps1` — PowerShell 5.1 wrapper for deterministic Python operations.
+- `src/docling_ai/corpusctl.py` — initial SQLite/inventory/hash/lifecycle engine.
+- `docs/ACTIONABLE-LABS.md` — ordered Lab 00–24 execution path, expected results, stop gates, auto-healing boundary and troubleshooting.
+
+**Do not put real corpus data into the system yet.** First pass the synthetic bootstrap, smoke, duplicate, rename/delete and reconciliation gates.
+
+---
 ## 1. Executive Summary
 
 **Docling AI** is a local-first knowledge workbench for handling large document estates, code repositories, images, and future media, then turning them into a traceable, searchable, governed corpus.
