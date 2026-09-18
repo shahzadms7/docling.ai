@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="white">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Docling AI Command Center</title>
-<link rel="stylesheet" href="/511-command-center.css">
+<link rel="stylesheet" href="/074-ui.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
 <div class="app">
   <aside class="rail" aria-label="Primary navigation">
-    <div class="brand"><span class="brandMark">D</span><span>Docling AI</span></div>
+    <div class="brand"><span class="brandMark" aria-hidden="true">D</span><span><strong>Docling AI</strong><small>Local Knowledge Workbench</small></span></div>
     <nav id="nav">
       <button class="navItem active" data-view="overview">⌂ <span>Overview</span></button>
       <button class="navItem" data-view="intake">＋ <span>Add Documents</span></button>
@@ -23,10 +24,23 @@
     </nav>
     <div class="railFoot"><span class="dot success"></span><span id="railHealth">Local only</span></div>
   </aside>
+
   <main id="main" tabindex="-1">
     <header class="topbar">
       <div><h1 id="viewTitle">Command Center</h1><p id="viewSubtitle">Evidence-first local knowledge workspace</p></div>
-      <div class="topActions"><span class="pill">FOUNDATION</span><button id="refreshBtn" class="ghost">↻ Refresh</button><button id="themeBtn" class="ghost">◐ Theme</button></div>
+      <div class="topActions">
+        <span class="pill">FOUNDATION</span>
+        <button id="refreshBtn" class="ghost" aria-label="Refresh system data">↻ Refresh</button>
+        <label class="themeControl" for="themeSelect">
+          <span>Theme</span>
+          <select id="themeSelect" aria-label="Choose visual theme">
+            <option value="white">White</option>
+            <option value="black">Black</option>
+            <option value="microsoft">Microsoft</option>
+            <option value="google">Google</option>
+          </select>
+        </label>
+      </div>
     </header>
 
     <section id="overview" class="view active">
@@ -34,12 +48,14 @@
         <div><span class="eyebrow">LOCAL • AUDITABLE • EVIDENCE-FIRST</span><h2>Your knowledge estate, under control.</h2><p>Ingest, trace, search, discuss, analyze and create without surrendering source evidence.</p></div>
         <button class="primary" data-jump="intake">＋ Add documents</button>
       </div>
+
       <div class="kpis">
         <article class="card metric"><span>Accounted files</span><strong id="kpiFiles">0</strong><small>Explicit inventory</small></article>
         <article class="card metric"><span>Open exceptions</span><strong id="kpiExceptions">0</strong><small>Needs attention</small></article>
         <article class="card metric"><span>AI model</span><strong id="kpiModel">Not selected</strong><small>Local Ollama</small></article>
         <article class="card metric"><span>System</span><strong id="kpiHealth">Checking…</strong><small>Foundation status</small></article>
       </div>
+
       <div class="grid2">
         <article class="card"><div class="cardHead"><h3>Processing pipeline</h3><span class="tag info">LIVE CONTRACT</span></div>
           <div class="pipeline"><span>Discover</span><b>→</b><span>Hash</span><b>→</b><span>Extract</span><b>→</b><span>Validate</span><b>→</b><span>Index</span><b>→</b><span>AI</span></div>
@@ -48,6 +64,7 @@
           <ul class="clean"><li>🔒 SOURCE is immutable</li><li>🧾 Every action is traceable</li><li>🧠 AI is interpretation, not evidence</li><li>🌐 No corpus upload by default</li></ul>
         </article>
       </div>
+
       <article class="card"><div class="cardHead"><h3>Recent evidence</h3><button class="linkBtn" data-jump="library">View library →</button></div><div id="recentTable"></div></article>
     </section>
 
@@ -77,12 +94,12 @@
       <article class="card tile"><span>PDF</span><h3>PDF package</h3><p>Controlled reports and review-ready distribution copies.</p></article>
       <article class="card tile"><span>◇</span><h3>Diagram</h3><p>Architecture, workflow, lifecycle and dependency diagrams.</p></article>
       <article class="card tile"><span>{ }</span><h3>Code</h3><p>Draft code with explicit review and source references.</p></article>
-    </div><div class="notice warn">Generation backends are not marked certified until their dependency, validation and regression gates pass.</div></section>
+    </div><div class="notice warn">Generation backends are not marked certified until dependency, validation and regression gates pass.</div></section>
 
     <section id="exceptions" class="view"><div class="sectionLead"><h2>Exceptions</h2><p>Failures remain visible until resolved or explicitly accepted.</p></div><div id="exceptionsTable" class="card"></div></section>
-    <section id="health" class="view"><div class="sectionLead"><h2>System health</h2><p>Environment, runtime, AI and evidence boundary health.</p></div><div id="healthGrid" class="kpis"></div></section>
+    <section id="health" class="view"><div class="sectionLead"><h2>System health</h2><p>Environment, runtime, AI and evidence-boundary status.</p></div><div id="healthGrid" class="kpis"></div></section>
   </main>
 </div>
-<script src="/512-command-center.js"></script>
+<script src="/075-ui.js"></script>
 </body>
 </html>
