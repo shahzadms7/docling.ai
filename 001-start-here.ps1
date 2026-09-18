@@ -9,4 +9,4 @@ Write-Host '2. Choose Prototype / MVP / Pilot / Enterprise'
 Write-Host '3. Build approved plan'
 Write-Host '4. Deploy, test, repair, certify'
 Write-Host 'Current release is FOUNDATION/WIP: it will not pretend unfinished modules are complete.' -ForegroundColor Yellow
-& (Join-Path $Here '010-ENVIRONMENT-DISCOVERY.ps1')
+& (Join-Path $Here '010-environment-discovery.ps1')
